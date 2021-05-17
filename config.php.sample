@@ -1,0 +1,5 @@
+<?php
+
+define('DIR_CSV_IN', '/home/boby/isbn/script/in/');
+define('DIR_CSV_OUT', '/home/boby/isbn/script/out/');
+define('DIR_CSV_DONE', '/home/boby/isbn/script/done/');
