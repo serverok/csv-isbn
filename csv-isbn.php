@@ -55,8 +55,15 @@ unlink($lock_file);
 function convertCSV($csvFile) {
     global $ISBN;
 
+    if (strpos($csvFile, 'addmodify') !== false) {
+        $csvFilePathOut = DIR_CSV_OUT. 'addmodify.csv';
+    }
+
+    if (strpos($csvFile, 'delete') !== false) {
+        $csvFilePathOut = DIR_CSV_OUT. 'delete.csv';
+    }
+
     $csvFilePath = DIR_CSV_IN . $csvFile;
-    $csvFilePathOut = DIR_CSV_OUT. $csvFile;
     $csvFilePathDone = DIR_CSV_DONE. $csvFile;
 
     if (!file_exists($csvFilePath)) {
@@ -115,4 +122,3 @@ function verifyDir($dirName) {
         die("Directory not found: "  . $dirName);
     }
 }
-
