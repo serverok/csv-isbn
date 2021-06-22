@@ -94,8 +94,6 @@ function convertCSV($csvFile) {
             $isbnNew = $ISBN->translate->to13($isbn); 
             $csvRow[] = $isbnNew;
             $csvRow[] = getCategryID($category);
-            print_r($csvRow);
-            exit;
         }
 
         fputcsv($file_handle2,$csvRow,",", '"');
