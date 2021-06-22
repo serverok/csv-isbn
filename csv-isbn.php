@@ -8,6 +8,7 @@
 
 require __DIR__ . '/config.php';
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/category.php';
 
 verifyDir(DIR_CSV_DONE);
 verifyDir(DIR_CSV_OUT);
@@ -84,12 +85,17 @@ function convertCSV($csvFile) {
         $csvRow = trimCSVData($csvRow);
 
         $isbn = $csvRow[9];
+        $category = $csvRow[19];
 
         if ($isbn == 'ISBN') {
             $csvRow[] = 'ISBN13';
+            $csvRow[] = 'CAT_ID';
         } else {
             $isbnNew = $ISBN->translate->to13($isbn); 
             $csvRow[] = $isbnNew;
+            $csvRow[] = getCategryID($category);
+            print_r($csvRow);
+            exit;
         }
 
         fputcsv($file_handle2,$csvRow,",", '"');
