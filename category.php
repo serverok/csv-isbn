@@ -11,20 +11,21 @@ foreach ($fileContent as $categoryLine) {
     }
     $categoryLineArray = explode(',,', $categoryLine);
     if (count($categoryLineArray) == 2) {
-        $categoryLineArray2 = array($categoryLineArray[0] => $categoryLineArray[1]);
-        $categoryMatch[] = $categoryLineArray2; 
+        $catName = trim($categoryLineArray[0]);
+        $catID = trim($categoryLineArray[1]);
+        $categoryMatch["$catName"] = $catID; 
     } else {
         echo "SKIP: $categoryLine\n";
     }
 }
 
 function getCategryID($category) {
-    global $categoryMatch;
+    global $categoryMatch;  
     $category = trim($category);
     if (isset($categoryMatch["$category"])) {
         $categoryID = $categoryMatch["$category"];
     } else {
-        echo "ERROR: Category not found $category\n";
+        echo "ERROR: Category not found \"$category\"\n";
         $categoryID = 0;
     }
     return $categoryID;
