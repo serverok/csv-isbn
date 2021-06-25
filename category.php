@@ -5,7 +5,7 @@
 # Email: admin@serverok.in
 ################################################################################
 
-$csvPath = __DIR__ . 'category-table.csv';
+$csvPath = __DIR__ . '/category-table.csv';
 
 if (!file_exists($csvPath)) {
     echo "$csvPath not found.\n"; exit;
