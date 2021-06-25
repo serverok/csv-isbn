@@ -5,7 +5,13 @@
 # Email: admin@serverok.in
 ################################################################################
 
-$fileContent = file('category-table.csv');
+$csvPath = __DIR__ . 'category-table.csv';
+
+if (!file_exists($csvPath)) {
+    echo "$csvPath not found.\n"; exit;
+}
+
+$fileContent = file($csvPath);
 
 $categoryMatch = array();
 
