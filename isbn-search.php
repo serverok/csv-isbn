@@ -37,6 +37,7 @@ foreach ($csvFiles as $csvFile) {
         if ($found !== false) {
             $fileFound[] = $csvFilePath;
             echo "$csvFilePath\n";
+            break;
         }
     }
 }
