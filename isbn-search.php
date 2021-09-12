@@ -41,3 +41,7 @@ foreach ($csvFiles as $csvFile) {
         }
     }
 }
+
+if (empty($fileFound)) {
+    echo "No files found with isbn\n";
+}
