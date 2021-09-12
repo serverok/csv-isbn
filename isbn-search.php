@@ -1,7 +1,7 @@
 #!/usr/bin/php -q
 <?php
 ################################################################################
-# Author: ServerOk Software
+# Author: ServerOK Software
 # Web: https://serverok.in
 # Email: admin@serverok.in
 ################################################################################
