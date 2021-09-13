@@ -11,7 +11,7 @@ require __DIR__ . '/category.php';
 
 verifyDir(DIR_CSV_DONE);
 verifyDir(DIR_CSV_OUT);
-verifyDir(DIR_CSV_DONE);
+verifyDir(DIR_CSV_MODIFIED);
 
 $lock_file = DIR_CSV_DONE . '/cron.lock';
 
@@ -65,6 +65,7 @@ function convertCSV($csvFile) {
 
     $csvFilePath = DIR_CSV_IN . $csvFile;
     $csvFilePathDone = DIR_CSV_DONE. $csvFile;
+    $csvFilePathModified = DIR_CSV_MODIFIED . $csvFile;
 
     if (!file_exists($csvFilePath)) {
         die("File not found: $csvFilePath\n");
@@ -105,6 +106,11 @@ function convertCSV($csvFile) {
     
     if (! rename($csvFilePath, $csvFilePathDone)) {
         echo "File remame failed: $csvFilePath => $csvFilePathDone\n";
+        exit;
+    }
+
+    if(! copy($csvFilePathOut, $csvFilePathModified) ) {
+        echo "ERROR: failed to copy $csvFilePathOut -> $csvFilePathModified\n";
         exit;
     }
     
