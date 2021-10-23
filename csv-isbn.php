@@ -32,6 +32,9 @@ if (file_exists($lock_file)) {
     touch($lock_file);
 }
 
+verifyDir(DIR_CSV_OUT. '/add/');
+verifyDir(DIR_CSV_OUT. '/delete/');
+
 $ISBN = new Isbn\Isbn();
 
 $csvFiles = scandir(DIR_CSV_IN);
@@ -56,11 +59,11 @@ function convertCSV($csvFile) {
     global $ISBN;
 
     if (strpos($csvFile, 'addmodify') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. 'addmodify.csv';
+        $csvFilePathOut = DIR_CSV_OUT. '/add/' . $csvFile;
     }
 
     if (strpos($csvFile, 'delete') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. 'delete.csv';
+        $csvFilePathOut = DIR_CSV_OUT. '/delete/' . $csvFile;
     }
 
     $csvFilePath = DIR_CSV_IN . $csvFile;
