@@ -59,11 +59,11 @@ function convertCSV($csvFile) {
     global $ISBN;
 
     if (strpos($csvFile, 'addmodify') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. '/add/' . $csvFile;
+        $csvFilePathOut = DIR_CSV_OUT. '/add/' . changeFileExtension($csvFile);
     }
 
     if (strpos($csvFile, 'delete') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. '/delete/' . $csvFile;
+        $csvFilePathOut = DIR_CSV_OUT. '/delete/' . changeFileExtension($csvFile);
     }
 
     $csvFilePath = DIR_CSV_IN . $csvFile;
@@ -133,4 +133,14 @@ function verifyDir($dirName) {
     if (! is_dir($dirName)) {
         die("Directory not found: "  . $dirName);
     }
+}
+
+function changeFileExtension($fileName) {
+    $pattern = '/(.*)\.txt$/i';
+    if (preg_match($pattern, $fileName, $matches)) {
+        $newName = $matches[1] . '.csv';
+    } else {
+        $newName = $fileName . '.csv';
+    }
+    return $newName;
 }
