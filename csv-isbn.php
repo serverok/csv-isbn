@@ -59,11 +59,13 @@ function convertCSV($csvFile) {
     global $ISBN;
 
     if (strpos($csvFile, 'addmodify') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. '/add/' . changeFileExtension($csvFile);
+        #$csvFilePathOut = DIR_CSV_OUT. '/add/' . changeFileExtension($csvFile);
+        $csvFilePathOut = DIR_CSV_OUT. '/add/addmodify.csv';
     }
 
     if (strpos($csvFile, 'delete') !== false) {
-        $csvFilePathOut = DIR_CSV_OUT. '/delete/' . changeFileExtension($csvFile);
+        #$csvFilePathOut = DIR_CSV_OUT. '/delete/' . changeFileExtension($csvFile);
+        $csvFilePathOut = DIR_CSV_OUT. '/delete/delete.csv';
     }
 
     $csvFilePath = DIR_CSV_IN . $csvFile;
